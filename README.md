@@ -1,12 +1,12 @@
-# Visual-Recognition-HW3
-NCTU Visual Recognition Homework 3
+# Visual-Recognition-HW4
+NCTU Visual Recognition Homework 4
 
 ## Hardware
 OS: Ubuntu 18.04.3 LTS
 
 CPU: Intel(R) Xeon(R) W-2133 CPU @ 3.60GHz
 
-GPU: 2x GeForce RTX 2080 TI
+GPU: 1x GeForce RTX 2080 TI
 
 ## Reproducing Submission
 To reproduct my submission without retrainig, do the following steps:
@@ -21,7 +21,7 @@ To reproduct my submission without retrainig, do the following steps:
 this code was trained and tested on Ubuntu 18.04
 
 ```
-cd /path/to/your/yolact/
+cd /path/to/your/ZSSR/
 conda env create -f environment.yml
 
 ```
@@ -30,23 +30,13 @@ conda env create -f environment.yml
 ```
 cs-t0828-2020-hw3
 
-├── HW3
-│   ├── yolact 
-│   │   ├── test_images
-│   │   │   ├── Put testing images here
-│   │   ├── test.json
-│   │   ├── sbd
-│   │   │   ├── img
-│   │   │   │   ├── Put training and validation images here
-│   │   │   ├── pascal_sbd_train.json
-│   │   │   ├── pascal_sbd_val.json
-│   ├── weights
-│   │   ├── Put pretrained (Imagenet) resnet50 weight here
-│   ├── results
-│   │   ├── your testing result will be here
+├── HW4
+│   ├── pytorch-ZSSR 
+│   │   ├── kernel_example
+│   │   │   ├── Put image and kernel here
 
 ```
-I seperate the original training data (1349 images) into two part. One for training (1200 images) and one for validation(149 images). (seperate_train_val.py can seperate original pascal_train.json randomly into training and validation)
+change your image and kernel data type as same as original one
 
 
 
@@ -54,26 +44,28 @@ I seperate the original training data (1349 images) into two part. One for train
 To train models:
 
 ```
-cd /path/to/your/yolact/
-python train.py --config=yolact_resnet50_pascal_config --batch_size=20 --batch_alloc=10,10 --validation_epoch=4 --save_epoch=4
+cd /path/to/your/ZSSR/
+python run_ZSSR.py X2_GIVEN_KERNEL_CONF
 ```
-[Pretrained weight resnet50 (Imagenet) ](https://drive.google.com/file/d/1xFwvDAvP2zN37oMLfV7y6UazPK7gxf93/view?usp=sharing)
-
 
 The expected training times are:
-Model | GPUs | Image size | Training Epoch | Training Time
------------- | ------------- | ------------- | ------------- | -------------
-YOLACT | 2x RTX 2080Ti | 550 x 550 | 144 | 2 hours
+Model | GPUs  | Training Iteration | Training Time
+------------ | ------------- | ------------- | -------------
+ZSSR | 1x RTX 2080Ti | 3000 | 2 minutes(each image)
 
 
 ## Testing
 To test models:
 
 ```
-cd /path/to/your/yolact/
-python createJSON.py --config=yolact_resnet50_pascal_config --trained_model=/path/to/your/well-trained weight/
+cd /path/to/your/ZSSR/
+python run_ZSSR.py X2_GIVEN_KERNEL_CONF
 ```
-[Pretrain weight](https://drive.google.com/file/d/1wv0pt55BxV43i0CbGaUgsxYU_OzuBlIE/view?usp=sharing)
+
+The expected training times are:
+Model | GPUs | Training Iteration | Training Time
+------------  | ------------- | ------------- | -------------
+ZSSR | 1x RTX 2080Ti  | 3000 | 2 minutes(each image)
 
 ## Reference
-1. [YOLACT](https://github.com/dbolya/yolact).
+1. [ZSSR](https://github.com/assafshocher/ZSSR).
