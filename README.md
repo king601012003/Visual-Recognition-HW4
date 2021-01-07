@@ -37,7 +37,7 @@ cs-t0828-2020-hw4
 
 
 ```
-I try a lot of combination between image and kernel, you can try your own combination.
+You can choose your own scale (2x 3x 4x) inside Config.py (line7) 
 
 ## Training
 To train models:
