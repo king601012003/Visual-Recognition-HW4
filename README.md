@@ -49,7 +49,7 @@ python run_ZSSR.py X2_GIVEN_KERNEL_CONF
 
 The expected training times are:
 Model | GPUs | Training Iteration | Training Time
------------- | ------------- | ------------- | ------------- | -------------
+------------ | ------------- | ------------- | -------------
 zssr | 1x RTX 2080Ti | 5000 | 5 minutes (each image)
 
 
